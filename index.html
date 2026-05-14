@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanessa Lei 雷杰童</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --font-en: 'Caveat', cursive;
+  --font-cn: 'ZCOOL XiaoWei', serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --sage: #6aacff;
+  --text: #1d1d2e;
+  --text-mid: #4a4a6a;
+  --text-soft: rgba(60,60,100,0.55);
+  --glass-bg: rgba(255,255,255,0.42);
+  --glass-border: rgba(255,255,255,0.78);
+  --glass-blur: blur(22px) saturate(1.5);
+}
+
+/* ── BODY & BACKGROUND ── */
+body {
+  font-family: var(--font-en);
+  min-height: 100vh;
+  background: #eef3ff;
+  overflow-x: hidden;
+  color: var(--text);
+}
+body.zh { font-family: var(--font-cn); }
+
+/* blobs */
+#bg {
+  position: fixed; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+}
+.blob {
+  position: absolute;
+  border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+  will-change: transform;
+  mix-blend-mode: normal;
+}
+/* Sharp core with soft edge: small blur on blob itself, heavy blur only on frost */
+.b1 {
+  width: 600px; height: 500px;
+  background: radial-gradient(ellipse at 40% 40%, #a8d4ff 0%, #85c0ff 40%, rgba(160,210,255,0.3) 70%, transparent 100%);
+  filter: blur(28px); opacity: 0.9;
+  top: -80px; left: -120px;
+  animation: b1m 20s ease-in-out infinite;
+}
+.b2 {
+  width: 540px; height: 480px;
+  background: radial-gradient(ellipse at 60% 55%, #ffb8d8 0%, #ff95c8 40%, rgba(255,160,200,0.3) 70%, transparent 100%);
+  filter: blur(24px); opacity: 0.88;
+  bottom: -60px; right: -80px;
+  animation: b2m 24s ease-in-out infinite;
+}
+.b3 {
+  width: 420px; height: 400px;
+  background: radial-gradient(ellipse at 50% 50%, #fff070 0%, #ffe840 45%, rgba(255,235,80,0.3) 70%, transparent 100%);
+  filter: blur(22px); opacity: 0.82;
+  top: 35%; left: 38%;
+  animation: b3m 17s ease-in-out infinite;
+}
+.b4 {
+  width: 300px; height: 280px;
+  background: radial-gradient(ellipse at 45% 45%, #b8e8ff 0%, #90d8ff 50%, transparent 100%);
+  filter: blur(18px); opacity: 0.8;
+  bottom: 18%; left: 6%;
+  animation: b4m 28s ease-in-out infinite;
+  border-radius: 55% 45% 40% 60% / 45% 55% 50% 50%;
+}
+.b5 {
+  width: 260px; height: 240px;
+  background: radial-gradient(ellipse at 55% 40%, #ffc8e8 0%, #ffaad8 50%, transparent 100%);
+  filter: blur(16px); opacity: 0.78;
+  top: 6%; right: 10%;
+  animation: b5m 21s ease-in-out infinite;
+  border-radius: 50% 50% 60% 40% / 60% 40% 55% 45%;
+}
+
+/* blob morph + float keyframes */
+@keyframes b1m {
+  0%   { transform: translate(0,0) scale(1) rotate(0deg); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+  25%  { transform: translate(120px,80px) scale(1.07) rotate(8deg); border-radius: 55% 45% 40% 60% / 45% 60% 40% 55%; }
+  50%  { transform: translate(60px,180px) scale(0.95) rotate(-4deg); border-radius: 45% 55% 60% 40% / 55% 40% 60% 45%; }
+  75%  { transform: translate(160px,100px) scale(1.04) rotate(12deg); border-radius: 60% 40% 50% 50% / 40% 55% 45% 60%; }
+  100% { transform: translate(0,0) scale(1) rotate(0deg); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+}
+@keyframes b2m {
+  0%   { transform: translate(0,0) scale(1) rotate(0deg); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+  30%  { transform: translate(-100px,-70px) scale(1.08) rotate(-10deg); border-radius: 55% 45% 42% 58% / 48% 58% 42% 52%; }
+  60%  { transform: translate(-180px,40px) scale(1.13) rotate(5deg); border-radius: 48% 52% 58% 42% / 55% 42% 58% 45%; }
+  100% { transform: translate(0,0) scale(1) rotate(0deg); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+}
+@keyframes b3m {
+  0%   { transform: translate(0,0) scale(1); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+  20%  { transform: translate(-90px,-70px) scale(1.1); border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%; }
+  45%  { transform: translate(70px,90px) scale(0.92); border-radius: 42% 58% 45% 55% / 58% 42% 52% 48%; }
+  70%  { transform: translate(-40px,55px) scale(1.06); }
+  100% { transform: translate(0,0) scale(1); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; }
+}
+@keyframes b4m {
+  0%,100% { transform: translate(0,0) rotate(0deg); }
+  40%     { transform: translate(90px,-55px) rotate(15deg); }
+  70%     { transform: translate(150px,35px) rotate(-8deg); }
+}
+@keyframes b5m {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%     { transform: translate(-70px,90px) scale(1.12) rotate(10deg); }
+}
+
+/* global frost — lighter so blobs show through clearly */
+#frost {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  backdrop-filter: blur(0px) saturate(1.1);
+  background: rgba(235,242,255,0.05);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+  z-index: 100;
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(255,255,255,0.52);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,0.82);
+  border-radius: 50px; padding: 7px 10px;
+  box-shadow: 0 4px 24px rgba(140,160,220,0.16), inset 0 1px 0 rgba(255,255,255,0.95);
+  white-space: nowrap;
+}
+.nav-logo {
+  font-family: var(--font-en); font-size: 17px; font-weight: 700;
+  color: var(--text); padding: 4px 12px; cursor: pointer; letter-spacing: 0.3px;
+}
+.nav-sep { width: 1px; height: 18px; background: rgba(100,120,200,0.18); margin: 0 2px; }
+.nav-btn {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font-en); font-size: 15px; font-weight: 600;
+  color: var(--text-mid); padding: 6px 14px; border-radius: 40px;
+  transition: all 0.22s;
+}
+body.zh .nav-btn { font-family: var(--font-cn); }
+.nav-btn:hover { background: rgba(255,255,255,0.7); color: var(--text); }
+.nav-btn.active { background: rgba(255,255,255,0.82); color: var(--text); box-shadow: 0 2px 8px rgba(120,140,220,0.14); }
+.lang-pill {
+  background: rgba(180,210,255,0.38); border: 1px solid rgba(140,190,255,0.5);
+  border-radius: 40px; padding: 5px 13px; cursor: pointer;
+  font-family: var(--font-ui); font-size: 13px; font-weight: 700;
+  color: #3a6abf; margin-left: 4px; transition: all 0.2s;
+}
+.lang-pill:hover { background: rgba(140,190,255,0.55); }
+
+/* ── SECTIONS ── */
+.page { display: none; position: relative; z-index: 2; min-height: 100vh; }
+.page.active { display: flex; }
+@keyframes pgIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+.page.active { animation: pgIn 0.38s ease; }
+
+/* ── HOME ── */
+#home {
+  flex-direction: column; align-items: center; justify-content: center;
+  padding: 100px 32px 60px; text-align: center;
+}
+.home-avatar {
+  width: 88px; height: 88px; border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  border: 2.5px solid rgba(255,255,255,0.9);
+  backdrop-filter: blur(10px);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; margin: 0 auto 24px;
+  box-shadow: 0 4px 24px rgba(140,170,255,0.2);
+}
+.home-sub {
+  font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--text-soft); margin-bottom: 12px;
+}
+#hero-title {
+  font-family: var(--font-en); font-size: clamp(44px,7vw,78px);
+  font-weight: 700; line-height: 1.08; color: var(--text); margin-bottom: 14px;
+  min-height: 1.2em;
+}
+body.zh #hero-title { font-family: var(--font-cn); }
+#hero-title em { color: #4a90e2; font-style: italic; }
+.tw-cursor { color: #4a90e2; animation: blink 0.85s step-end infinite; margin-left:1px; }
+.tw-cursor.done { animation:none; opacity:0; }
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+#hero-sub { font-family:var(--font-en); font-size:26px; color:var(--text-mid); margin-bottom:8px; }
+body.zh #hero-sub { font-family:var(--font-cn); }
+.home-desc {
+  font-family: var(--font-en); font-size: 19px; color: var(--text-mid);
+  line-height: 1.75; max-width: 520px; margin: 0 auto 52px;
+}
+body.zh .home-desc { font-family: var(--font-cn); font-size:17px; }
+
+/* ── APP ICONS GRID ── */
+.app-grid {
+  display: flex; gap: 28px; justify-content: center; flex-wrap: wrap;
+  perspective: 900px;
+}
+.app-icon {
+  width: 110px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  transition: transform 0.12s;
+}
+.app-icon-face {
+  width: 110px; height: 110px; border-radius: 26px;
+  background: rgba(255,255,255,0.52);
+  border: 1px solid rgba(255,255,255,0.82);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: 0 8px 32px rgba(140,160,230,0.16), inset 0 1px 0 rgba(255,255,255,0.95), inset 0 -1px 0 rgba(140,160,220,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 46px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out, box-shadow 0.2s;
+  will-change: transform;
+}
+.app-icon:hover .app-icon-face {
+  box-shadow: 0 16px 48px rgba(120,150,255,0.24), inset 0 1px 0 rgba(255,255,255,0.98);
+}
+.app-icon-label {
+  font-family: var(--font-ui); font-size: 13px; font-weight: 500;
+  color: var(--text-mid); letter-spacing: 0.2px; text-align: center;
+}
+.en-t { display: inline; }
+.cn-t { display: none; }
+body.zh .en-t { display: none; }
+body.zh .cn-t { display: inline; }
+
+/* ── INNER PAGES ── */
+.page-inner {
+  display: flex; flex-direction: column;
+  align-items: center; width: 100%;
+  padding: 110px 24px 80px;
+}
+.page-content {
+  width: 100%; max-width: 820px;
+}
+.glass-section {
+  background: rgba(255,255,255,0.46);
+  backdrop-filter: blur(22px) saturate(1.4);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.78);
+  border-radius: 24px; padding: 36px 40px; margin-bottom: 20px;
+  box-shadow: 0 4px 24px rgba(140,160,220,0.1), inset 0 1px 0 rgba(255,255,255,0.9);
+}
+.pg-title {
+  font-family: var(--font-en); font-size: 46px; font-weight: 700;
+  color: var(--text); margin-bottom: 6px; line-height: 1.1;
+}
+body.zh .pg-title { font-family: var(--font-cn); }
+.pg-title em { color: #4a90e2; font-style: italic; }
+.pg-line { width: 40px; height: 4px; border-radius: 2px; background: #7ab8ff; margin-bottom: 32px; }
+
+/* about cards grid */
+.about-intro-text { font-family: var(--font-en); font-size: 17px; color: var(--text-mid); line-height: 1.9; }
+body.zh .about-intro-text { font-family: var(--font-cn); }
+.about-intro-text strong { color: #3a6abf; font-weight: 700; }
+.mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.mini-card {
+  background: rgba(255,255,255,0.58); border-radius: 18px; padding: 22px;
+  border: 1px solid rgba(255,255,255,0.8);
+  backdrop-filter: blur(12px);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mini-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(140,160,220,0.14); }
+.mini-card-icon { font-size: 28px; margin-bottom: 10px; }
+.mini-card h3 { font-family: var(--font-ui); font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-soft); margin-bottom: 8px; }
+.mini-card p { font-family: var(--font-en); font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+body.zh .mini-card p { font-family: var(--font-cn); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.chip { padding: 4px 11px; border-radius: 20px; font-size: 12px; font-weight: 700; font-family: var(--font-ui); background: rgba(120,180,255,0.18); color: #2a5abf; border: 1px solid rgba(120,180,255,0.3); }
+
+/* tabs */
+.tab-row { display: flex; gap: 8px; margin-bottom: 24px; }
+.tab-btn {
+  padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(180,200,255,0.4);
+  background: rgba(255,255,255,0.4); cursor: pointer;
+  font-family: var(--font-ui); font-size: 13px; font-weight: 700;
+  color: var(--text-soft); transition: all 0.2s; backdrop-filter: blur(8px);
+}
+.tab-btn.active { background: rgba(255,255,255,0.78); color: var(--text); border-color: rgba(255,255,255,0.9); box-shadow: 0 2px 12px rgba(140,160,220,0.14); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; animation: pgIn 0.28s ease; }
+
+/* exp cards */
+.exp-card {
+  background: rgba(255,255,255,0.5); border-radius: 18px; padding: 24px 28px;
+  border: 1px solid rgba(255,255,255,0.78); margin-bottom: 14px;
+  display: flex; gap: 18px;
+  backdrop-filter: blur(14px);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.exp-card:hover { transform: translateX(5px); box-shadow: 0 6px 24px rgba(140,160,220,0.13); }
+.exp-icon { width: 48px; height: 48px; border-radius: 13px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.exp-icon.ic-intern { background: rgba(180,220,255,0.45); }
+.exp-icon.ic-proj   { background: rgba(200,180,255,0.45); }
+.exp-body h3 { font-family: var(--font-en); font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+body.zh .exp-body h3 { font-family: var(--font-cn); }
+.exp-meta { font-family: var(--font-ui); font-size: 12px; color: var(--text-soft); margin-bottom: 8px; display:flex; gap:12px; flex-wrap:wrap; }
+.exp-body p { font-family: var(--font-en); font-size: 15px; color: var(--text-mid); line-height: 1.72; }
+body.zh .exp-body p { font-family: var(--font-cn); }
+.exp-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:10px; }
+.exp-tag { padding:3px 9px; border-radius:10px; font-size:11px; font-weight:700; font-family:var(--font-ui); background:rgba(180,200,255,0.3); color:#3a5abf; }
+.placeholder-chip {
+  background: rgba(255,220,180,0.45); border-radius: 12px; padding: 12px 18px;
+  font-family: var(--font-ui); font-size: 13px; color: #a06020; font-style:italic;
+  border: 1px dashed rgba(220,160,80,0.5); margin-bottom: 14px; text-align:center;
+}
+
+/* hobbies */
+.hobby-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.hobby-card {
+  background: rgba(255,255,255,0.46); border-radius: 22px; padding: 30px 20px;
+  border: 1px solid rgba(255,255,255,0.78); text-align: center;
+  backdrop-filter: blur(16px);
+  transition: transform 0.22s, box-shadow 0.22s;
+  position: relative; overflow: hidden;
+}
+.hobby-card::before { content:''; position:absolute; top:0;left:0;right:0;height:4px; border-radius:22px 22px 0 0; }
+.hobby-card.hm::before { background: linear-gradient(90deg,#d4a8ff,#b090e8); }
+.hobby-card.hf::before { background: linear-gradient(90deg,#ffb0d0,#ff90b8); }
+.hobby-card.hg::before { background: linear-gradient(90deg,#90d0ff,#60b8f8); }
+.hobby-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(140,160,220,0.18); }
+.hobby-illus { font-size: 48px; margin-bottom: 14px; }
+.hobby-card h3 { font-family: var(--font-en); font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+body.zh .hobby-card h3 { font-family: var(--font-cn); }
+.hobby-card p { font-family: var(--font-en); font-size: 13px; color: var(--text-soft); line-height: 1.7; }
+body.zh .hobby-card p { font-family: var(--font-cn); }
+.htags { display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:12px; }
+.htag { font-size:11px;font-weight:700;font-family:var(--font-ui);padding:3px 9px;border-radius:10px; }
+.hm .htag { background:rgba(200,180,255,0.35);color:#7040c0; }
+.hf .htag { background:rgba(255,180,210,0.35);color:#b04070; }
+.hg .htag { background:rgba(160,210,255,0.35);color:#2070b8; }
+
+/* connect */
+.connect-hero {
+  text-align: center; padding: 48px 32px 32px;
+}
+.connect-hero h2 { font-family:var(--font-en); font-size:42px; font-weight:700; color:var(--text); margin-bottom:10px; }
+body.zh .connect-hero h2 { font-family:var(--font-cn); }
+.connect-hero p { font-family:var(--font-en); font-size:17px; color:var(--text-mid); line-height:1.8; margin-bottom:36px; max-width:480px; margin-left:auto; margin-right:auto; }
+body.zh .connect-hero p { font-family:var(--font-cn); }
+.link-cards { display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:460px; margin:0 auto; }
+.link-card {
+  background:rgba(255,255,255,0.52); border-radius:20px; padding:28px 22px; text-align:center;
+  border: 2px solid transparent; cursor:pointer; text-decoration:none; display:block;
+  backdrop-filter:blur(16px); transition:all 0.22s;
+}
+.link-card:hover { transform:translateY(-4px); box-shadow:0 12px 36px rgba(140,160,220,0.18); }
+.link-card.lc-resume { border-color:rgba(100,180,255,0.5); }
+.link-card.lc-resume:hover { background:rgba(100,160,255,0.18); }
+.link-card.lc-li { border-color:rgba(0,119,181,0.35); }
+.link-card.lc-li:hover { background:rgba(0,119,181,0.1); }
+.link-card .lci { font-size:36px; margin-bottom:10px; }
+.link-card .lcl { font-family:var(--font-ui); font-size:16px; font-weight:700; margin-bottom:3px; }
+.link-card.lc-resume .lcl { color:#2a6abf; }
+.link-card.lc-li .lcl { color:#0077B5; }
+.link-card .lcs { font-family:var(--font-ui); font-size:12px; color:var(--text-soft); }
+
+/* lang switching */
+.en { display: block; }
+.cn { display: none; }
+.en-i { display: inline; }
+.cn-i { display: none; }
+body.zh .en { display: none; }
+body.zh .cn { display: block; }
+body.zh .en-i { display: none; }
+body.zh .cn-i { display: inline; }
+
+@media(max-width:640px){
+  nav { top:12px; padding:6px 8px; gap:2px; }
+  .nav-btn { padding:5px 9px; font-size:13px; }
+  .app-grid { gap:18px; }
+  .app-icon { width:88px; }
+  .app-icon-face { width:88px; height:88px; font-size:36px; border-radius:20px; }
+  .mini-grid,.hobby-grid,.link-cards { grid-template-columns:1fr; }
+  .glass-section { padding:24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- BACKGROUND -->
+<div id="bg">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="blob b4"></div>
+  <div class="blob b5"></div>
+</div>
+<div id="frost"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo" onclick="go('home')">✦ Vanessa</div>
+  <div class="nav-sep"></div>
+  <button class="nav-btn active" id="nb-home"       onclick="go('home')"><span class="en-i">Home</span><span class="cn-i">首页</span></button>
+  <button class="nav-btn"        id="nb-about"      onclick="go('about')"><span class="en-i">About</span><span class="cn-i">关于</span></button>
+  <button class="nav-btn"        id="nb-experience" onclick="go('experience')"><span class="en-i">Experience</span><span class="cn-i">经历</span></button>
+  <button class="nav-btn"        id="nb-hobbies"    onclick="go('hobbies')"><span class="en-i">Hobbies</span><span class="cn-i">爱好</span></button>
+  <button class="nav-btn"        id="nb-projects"   onclick="go('projects')"><span class="en-i">Projects</span><span class="cn-i">项目</span></button>
+  <button class="nav-btn"        id="nb-connect"    onclick="go('connect')"><span class="en-i">Connect</span><span class="cn-i">联系</span></button>
+  <button class="lang-pill" id="lbtn" onclick="toggleLang()">中文</button>
+</nav>
+
+<!-- ═══ HOME ═══ -->
+<section class="page active" id="home">
+  <div class="home-avatar">🌿</div>
+  <p class="home-sub">Financial Data Analyst · FP&A × Data Science · Los Angeles</p>
+
+  <h1 id="hero-title"><span id="tw-text"></span><span class="tw-cursor" id="tw-cur">|</span><span id="tw-sub" style="display:none"></span></h1>
+
+  <p class="home-desc en">A data storyteller who turns messy numbers into clear insights — with Python, SQL, and very strong opinions about good food. 🍜</p>
+  <p class="home-desc cn">用数据讲故事的人 — 把乱糟糟的数字变成清晰的洞见，带着Python、SQL和对美食非常有主见的口味。🍜</p>
+
+  <div class="app-grid">
+    <div class="app-icon" onclick="go('about')"      data-label-en="About Me"   data-label-cn="关于我">
+      <div class="app-icon-face" id="ai-about">🙋‍♀️</div>
+      <span class="app-icon-label"><span class="en-t">About Me</span><span class="cn-t">关于我</span></span>
+    </div>
+    <div class="app-icon" onclick="go('experience')" data-label-en="Experience" data-label-cn="经历">
+      <div class="app-icon-face" id="ai-exp">💼</div>
+      <span class="app-icon-label"><span class="en-t">Experience</span><span class="cn-t">经历</span></span>
+    </div>
+    <div class="app-icon" onclick="go('hobbies')"    data-label-en="Hobbies"    data-label-cn="爱好">
+      <div class="app-icon-face" id="ai-hob">🎵</div>
+      <span class="app-icon-label"><span class="en-t">Hobbies</span><span class="cn-t">爱好</span></span>
+    </div>
+    <div class="app-icon" onclick="go('connect')"    data-label-en="Connect"    data-label-cn="联系">
+      <div class="app-icon-face" id="ai-con">✉️</div>
+      <span class="app-icon-label"><span class="en-t">Connect</span><span class="cn-t">联系</span></span>
+    </div>
+    <div class="app-icon" onclick="go('projects')"   data-label-en="Projects"   data-label-cn="项目">
+      <div class="app-icon-face" id="ai-proj">📊</div>
+      <span class="app-icon-label"><span class="en-t">Projects</span><span class="cn-t">项目</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="page" id="about">
+  <div class="page-inner">
+    <div class="page-content">
+      <h2 class="pg-title en">About <em>Me</em></h2>
+      <h2 class="pg-title cn">关于<em>我</em></h2>
+      <div class="pg-line"></div>
+      <div class="glass-section">
+        <p class="about-intro-text en">I'm <strong>Vanessa Lei (雷杰童)</strong> — a Financial Data Analyst at the intersection of <strong>finance and technology</strong>, based in Los Angeles. I hold a BS in Financial Mathematics from Ohio State and an MS in Applied Data Science from USC, which means I genuinely speak both languages: P&L and Python, forecasting models and machine learning pipelines.<br><br>
+        My path into FP&A wasn't accidental. Working across startups and nonprofits, I kept finding the same gap — finance teams drowning in manual processes, and data teams building tools that no one in the business could actually use. I became obsessed with closing that gap: automating the close cycle with VBA, surfacing deferred revenue risks months in advance with cohort models, turning a 40-tab spreadsheet into a Tableau dashboard that an executive can actually read in five minutes.<br><br>
+        What makes me different is that I bring <strong>AI and automation fluency into financial workflows</strong> — using Python for cohort analysis and churn modeling, SQL for AR visibility, and tools like Power BI and Tableau to make financial storytelling fast and clear. I don't just run the numbers; I build the systems that make the numbers trustworthy.</p>
+
+        <p class="about-intro-text cn">我是<strong>雷杰童 Vanessa</strong>，财务数据分析师，坐落在金融与技术的交叉点上，目前在洛杉矶。我本科主修金融数学（俄亥俄州立大学），硕士攻读应用数据科学（南加大）——这意味着我同时说两种语言：P&L和Python，预测模型和机器学习管道。<br><br>
+        走向FP&A并非偶然。在初创公司和非营利机构工作的过程中，我反复发现同一个痛点：财务团队被手动流程淹没，而数据团队构建的工具业务侧根本用不上。我开始专注于填补这个鸿沟：用VBA自动化月结流程、用队列模型提前数月预警递延收入风险、把密密麻麻的电子表格变成高管五分钟就能读懂的Tableau仪表盘。<br><br>
+        我的独特之处在于将<strong>AI和自动化能力带入财务工作流</strong>——用Python做队列分析和流失预测，用SQL提升应收账款可见度，用Power BI和Tableau让财务叙事变得快速清晰。我不只是跑数字，我搭建让数字变得可信的系统。</p>
+
+        <div class="mini-grid">
+          <div class="mini-card">
+            <div class="mini-card-icon">🎓</div>
+            <h3>Education</h3>
+            <p class="en"><strong>MS Applied Data Science</strong><br>University of Southern California · 2024<br><br><strong>BS Financial Mathematics</strong><br>Ohio State University · 2022</p>
+            <p class="cn"><strong>应用数据科学硕士</strong><br>南加州大学 · 2024<br><br><strong>金融数学学士</strong><br>俄亥俄州立大学 · 2022</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-icon">💻</div>
+            <h3>Technical Skills</h3>
+            <div class="chip-row">
+              <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Tableau</span>
+              <span class="chip">Power BI</span><span class="chip">Excel / VBA</span><span class="chip">SAP HANA</span>
+              <span class="chip">Alteryx</span><span class="chip">QuickBooks</span><span class="chip">Salesforce</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-icon">📊</div>
+            <h3>Finance Skills</h3>
+            <div class="chip-row">
+              <span class="chip">Financial Modeling</span><span class="chip">FP&amp;A</span><span class="chip">Forecasting</span>
+              <span class="chip">Scenario Analysis</span><span class="chip">Unit Economics</span><span class="chip">Revenue Recognition</span>
+              <span class="chip">Variance Analysis</span><span class="chip">Cash Flow</span>
+            </div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-icon">🎯</div>
+            <h3>Seeking</h3>
+            <p class="en">FP&A Analyst / Financial Data Analyst roles in the US. Open to full-time opportunities (OPT eligible). Especially excited about companies where finance and data strategy intersect.</p>
+            <p class="cn">美国FP&A分析师 / 财务数据分析师职位，欢迎全职机会（OPT资质）。尤其对金融与数据战略交叉的公司充满热情。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section class="page" id="experience">
+  <div class="page-inner">
+    <div class="page-content">
+      <h2 class="pg-title en">My <em>Experience</em></h2>
+      <h2 class="pg-title cn">我的<em>经历</em></h2>
+      <div class="pg-line"></div>
+      <div class="glass-section">
+        <div class="tab-row">
+          <button class="tab-btn active" onclick="switchTab('work',this)"><span class="en-i">💼 Work Experience</span><span class="cn-i">💼 工作经历</span></button>
+          <button class="tab-btn"        onclick="switchTab('edu',this)"><span class="en-i">🎓 Education</span><span class="cn-i">🎓 教育背景</span></button>
+        </div>
+
+        <!-- WORK TAB -->
+        <div class="tab-pane active" id="tab-work">
+
+          <!-- Innovation AI -->
+          <div class="exp-card">
+            <div class="exp-icon ic-intern">🤖</div>
+            <div class="exp-body">
+              <h3><span class="en-i">Innovation AI — Financial Data Analyst</span><span class="cn-i">Innovation AI — 财务数据分析师</span></h3>
+              <div class="exp-meta">
+                <span>📍 Los Angeles, CA</span>
+                <span>🗓 Dec 2025 – Present</span>
+              </div>
+              <p class="en">Led the 3-year financial planning cycle across AI Chatbot and Data Services product lines — built bottom-up revenue forecasts incorporating ARPU growth, gross margin improvement (45%→55%), and customer acquisition assumptions, projecting revenue scaling from $268K to $1.99M with CM turning positive in Year 2. Built a full unit economics model for the B2B SaaS product line (CAC $1,833, LTV/CAC 3.5×, 9.4-month payback) and identified churn as the primary risk driver. Developed scenario and sensitivity models to support capital allocation across 2 product lines, and automated Tableau dashboards that reduced manual reporting time by ~40%.</p>
+              <p class="cn">主导跨AI聊天机器人和数据服务两条产品线的三年财务规划周期，构建自下而上的收入预测模型，整合ARPU增长、毛利率改善（45%→55%）和客户获取假设，预测收入从$268K扩展至$199万，贡献利润在第二年转正。构建B2B SaaS产品线完整单位经济学模型（CAC $1,833，LTV/CAC 3.5x，回收期9.4个月），识别流失率为核心风险因子。开发情景和敏感性分析模型支持两条产品线的资本配置决策，自动化Tableau仪表盘使手动报告时间减少约40%。</p>
+              <div class="exp-tags"><span class="exp-tag">Financial Modeling</span><span class="exp-tag">FP&amp;A</span><span class="exp-tag">Tableau</span><span class="exp-tag">Unit Economics</span><span class="exp-tag">Scenario Analysis</span></div>
+            </div>
+          </div>
+
+          <!-- Joy of Life -->
+          <div class="exp-card">
+            <div class="exp-icon ic-proj">📋</div>
+            <div class="exp-body">
+              <h3><span class="en-i">Joy Of Life Corp. — Billing Analyst</span><span class="cn-i">Joy Of Life Corp. — 账单分析师</span></h3>
+              <div class="exp-meta">
+                <span>📍 Los Angeles, CA</span>
+                <span>🗓 Feb – Dec 2025</span>
+              </div>
+              <p class="en">Standardized month-end close workflows across Salesforce, QuickBooks, and bank statements — reduced the close cycle from ~7 to 4 days using VBA automation. Built a rolling 12-month forecast with cohort-level pipeline waterfall and milestone-based revenue recognition across 100+ active cases; uncovered a ~$3.2M deferred revenue gap and built a scenario model quantifying a $6.1M–$14.2M revenue range to flag liquidity risk 6+ months ahead. Automated AR data consolidation via SQL, reducing overdue receivables by 18%. Developed Power BI dashboards integrating financial and operational data for revenue and case progression tracking.</p>
+              <p class="cn">标准化Salesforce、QuickBooks和银行对账单的月结工作流，通过VBA自动化将月结周期从约7天缩短至4天。构建含队列级管道瀑布和里程碑收入确认的滚动12个月预测，覆盖100+活跃案例；发现约$320万递延收入缺口，并建立量化$610万–$1,420万收入区间的情景模型，提前6个月以上预警流动性风险。通过SQL自动化AR数据整合，逾期应收款减少18%。开发Power BI仪表盘整合财务与运营数据，追踪收入及案例进展。</p>
+              <div class="exp-tags"><span class="exp-tag">SQL</span><span class="exp-tag">VBA</span><span class="exp-tag">Power BI</span><span class="exp-tag">Revenue Recognition</span><span class="exp-tag">Cash Flow</span><span class="exp-tag">Salesforce</span></div>
+            </div>
+          </div>
+
+          <!-- World Disaster Center -->
+          <div class="exp-card">
+            <div class="exp-icon ic-intern">🌍</div>
+            <div class="exp-body">
+              <h3><span class="en-i">World Disaster Center — Financial Data Analyst</span><span class="cn-i">World Disaster Center — 财务数据分析师</span></h3>
+              <div class="exp-meta">
+                <span>📍 New York, NY</span>
+                <span>🗓 Oct 2024 – Feb 2025</span>
+              </div>
+              <p class="en">Conducted monthly reconciliations of restricted and unrestricted fund accounts ensuring donor compliance; supported grant audits via SAP HANA expenditure reports. Partnered cross-functionally to analyze actual vs. budget variances and improve resource allocation. Built cost analysis models in Excel (pivot tables, SUMIFS, XLOOKUP) to break down spending by program type and funding source. Streamlined multi-donor financial reporting by standardizing expense templates with Alteryx, reducing manual reporting errors.</p>
+              <p class="cn">每月核对限制性和非限制性资金账户，确保捐赠方合规；通过SAP HANA支出报告支持拨款审计。跨部门合作分析实际与预算差异，改善资源配置。在Excel中（数据透视表、SUMIFS、XLOOKUP）构建按项目类型和资金来源细分支出的成本分析模型。通过Alteryx工作流标准化多捐赠方财务报告模板，减少手动报告错误。</p>
+              <div class="exp-tags"><span class="exp-tag">SAP HANA</span><span class="exp-tag">Excel</span><span class="exp-tag">Alteryx</span><span class="exp-tag">Budget Variance</span><span class="exp-tag">Grant Reporting</span></div>
+            </div>
+          </div>
+
+          <!-- Sinotek -->
+          <div class="exp-card">
+            <div class="exp-icon ic-proj">🐍</div>
+            <div class="exp-body">
+              <h3><span class="en-i">Sinotek Co., Ltd. — Data Analyst</span><span class="cn-i">中技公司 — 数据分析师</span></h3>
+              <div class="exp-meta">
+                <span>📍 Shanghai, CN</span>
+                <span>🗓 Apr – Aug 2024</span>
+              </div>
+              <p class="en">Conducted revenue segmentation and cohort-based forecasting using Python — identified high-margin cohorts driving an 8% uplift in repeat revenue. Built churn forecasting and revenue sensitivity models supporting strategies that increased recurring revenue by 12% and reduced attrition risk. Integrated performance metrics into budgeting processes, improving forecast accuracy by 20% and enabling data-driven investment decisions.</p>
+              <p class="cn">使用Python进行收入细分和基于队列的预测，识别出推动复购收入提升8%的高利润队列。构建流失预测和收入敏感性模型，支持将经常性收入提升12%并降低低绩效产品线客户流失风险的策略。将绩效指标整合至预算流程，将预测准确率提高20%，支持数据驱动的投资决策。</p>
+              <div class="exp-tags"><span class="exp-tag">Python</span><span class="exp-tag">Cohort Analysis</span><span class="exp-tag">Churn Modeling</span><span class="exp-tag">Forecasting</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- EDUCATION TAB -->
+        <div class="tab-pane" id="tab-edu">
+          <div class="exp-card">
+            <div class="exp-icon ic-intern">🎓</div>
+            <div class="exp-body">
+              <h3><span class="en-i">University of Southern California — MS Applied Data Science</span><span class="cn-i">南加州大学 — 应用数据科学硕士</span></h3>
+              <div class="exp-meta"><span>📍 Los Angeles, CA</span><span>🗓 Jan 2023 – Dec 2024</span></div>
+              <p class="en">Specialized in machine learning, statistical modeling, data visualization, and large-scale data pipelines. Applied coursework directly to financial modeling and business analytics projects.</p>
+              <p class="cn">专攻机器学习、统计建模、数据可视化和大规模数据管道，将课程内容直接应用于财务建模和商业分析项目。</p>
+              <div class="exp-tags"><span class="exp-tag">Machine Learning</span><span class="exp-tag">Statistics</span><span class="exp-tag">Python</span><span class="exp-tag">Data Visualization</span></div>
+            </div>
+          </div>
+          <div class="exp-card">
+            <div class="exp-icon ic-proj">📐</div>
+            <div class="exp-body">
+              <h3><span class="en-i">Ohio State University — BS Financial Mathematics</span><span class="cn-i">俄亥俄州立大学 — 金融数学学士</span></h3>
+              <div class="exp-meta"><span>📍 Columbus, OH</span><span>🗓 Aug 2018 – May 2022</span></div>
+              <p class="en">Built strong foundations in quantitative finance, probability theory, and mathematical modeling — the analytical backbone behind my approach to financial forecasting and risk analysis.</p>
+              <p class="cn">在定量金融、概率论和数学建模方面打下坚实基础——这是我进行财务预测和风险分析的分析核心。</p>
+              <div class="exp-tags"><span class="exp-tag">Quantitative Finance</span><span class="exp-tag">Probability Theory</span><span class="exp-tag">Mathematical Modeling</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOBBIES ═══ -->
+<section class="page" id="hobbies">
+  <div class="page-inner">
+    <div class="page-content">
+      <h2 class="pg-title en">Beyond <em>Data</em></h2>
+      <h2 class="pg-title cn">数据之外的<em>我</em></h2>
+      <div class="pg-line"></div>
+      <div class="glass-section">
+        <p style="font-family:var(--font-en);font-size:17px;color:var(--text-mid);line-height:1.85;margin-bottom:28px;" class="en">When I'm not wrangling datasets, you'll find me lost in music, cooking something delicious, or deep inside a game world. Balance is important — so is a great playlist. 🎵</p>
+        <p style="font-family:var(--font-cn);font-size:17px;color:var(--text-mid);line-height:1.85;margin-bottom:28px;" class="cn">不在跟数据较劲的时候，你大概能在音乐里、厨房里、或者游戏世界里找到我。生活需要平衡——也需要一张好歌单。🎵</p>
+        <div class="hobby-grid">
+          <div class="hobby-card hm">
+            <div class="hobby-illus">🎵</div>
+            <h3><span class="en-i">Music</span><span class="cn-i">音乐</span></h3>
+            <p class="en">Playlists, instruments, live concerts — music is my mood regulator and creative fuel.</p>
+            <p class="cn">歌单、乐器、现场演出 — 音乐是我的情绪调节器和创意来源。</p>
+            <div class="htags"><span class="htag">🎧 Playlists</span><span class="htag">🎹 Instruments</span><span class="htag">🎤 Live</span></div>
+          </div>
+          <div class="hobby-card hf">
+            <div class="hobby-illus">🍜</div>
+            <h3><span class="en-i">Food & Cooking</span><span class="cn-i">美食 & 烹饪</span></h3>
+            <p class="en">The kitchen is my happy place — experimenting with flavors is the best kind of experiment.</p>
+            <p class="cn">厨房是我最快乐的地方——研究食材和口味是最好的实验。</p>
+            <div class="htags"><span class="htag">🥢 Asian Cuisine</span><span class="htag">🧑‍🍳 Cooking</span><span class="htag">🗺 Food Hunting</span></div>
+          </div>
+          <div class="hobby-card hg">
+            <div class="hobby-illus">🎮</div>
+            <h3><span class="en-i">Gaming</span><span class="cn-i">游戏</span></h3>
+            <p class="en">Story RPGs, strategy, open worlds — games are where I decompress and appreciate good design.</p>
+            <p class="cn">剧情RPG、策略、开放世界 — 游戏是我减压的地方，也让我欣赏好的设计。</p>
+            <div class="htags"><span class="htag">🕹 Story RPGs</span><span class="htag">⚔️ Strategy</span><span class="htag">🌏 Open World</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONNECT ═══ -->
+<section class="page" id="connect">
+  <div class="page-inner">
+    <div class="page-content">
+      <div class="glass-section">
+        <div class="connect-hero">
+          <h2 class="en">Let's <em style="color:#4a90e2;font-style:italic">Connect</em> 👋</h2>
+          <h2 class="cn"><em style="color:#4a90e2;font-style:normal">联系</em>我 👋</h2>
+          <p class="en">Open to data analyst opportunities, interesting collaborations, or just a conversation about food, music, and everything in between.</p>
+          <p class="cn">欢迎聊数据分析机会、有趣的合作想法，或者只是聊聊美食、音乐和生活里的一切。</p>
+          <div class="link-cards">
+            <a class="link-card lc-resume" href="YOUR_RESUME_LINK" target="_blank">
+              <div class="lci">📄</div>
+              <div class="lcl"><span class="en-i">Resume</span><span class="cn-i">简历</span></div>
+              <div class="lcs"><span class="en-i">Download PDF</span><span class="cn-i">下载 PDF</span></div>
+            </a>
+            <a class="link-card lc-li" href="YOUR_LINKEDIN_URL" target="_blank">
+              <div class="lci">💼</div>
+              <div class="lcl">LinkedIn</div>
+              <div class="lcs"><span class="en-i">View Profile</span><span class="cn-i">查看主页</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── NAVIGATION ──
+function go(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const nb = document.getElementById('nb-' + id);
+  if (nb) nb.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (id === 'home') startTypewriter();
+}
+
+// ── TABS ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── LANGUAGE ──
+let zh = false;
+function toggleLang() {
+  zh = !zh;
+  document.body.classList.toggle('zh', zh);
+  document.getElementById('lbtn').textContent = zh ? 'EN' : '中文';
+  if (document.getElementById('home').classList.contains('active')) startTypewriter();
+}
+
+// ── TYPEWRITER ──
+function startTypewriter() {
+  const enParts = ["Hi, I'm ", "Vanessa", " Lei"];
+  const cnParts = ["你好，我是", "雷杰童", ""];
+  const parts = zh ? cnParts : enParts;
+  const speed = zh ? 88 : 65;
+  const twText = document.getElementById('tw-text');
+  const twCur  = document.getElementById('tw-cur');
+  const twSub  = document.getElementById('tw-sub');
+
+  twText.innerHTML = '';
+  twCur.classList.remove('done');
+  twSub.style.display = 'none';
+  twSub.innerHTML = zh ? '<br>Vanessa Lei ✦' : '';
+
+  const full = parts[0] + parts[1] + parts[2];
+  const p0 = parts[0].length, p1 = parts[0].length + parts[1].length;
+  let i = 0;
+  function tick() {
+    i++;
+    const typed = full.slice(0, i);
+    if (typed.length <= p0)       twText.innerHTML = typed;
+    else if (typed.length <= p1)  twText.innerHTML = parts[0] + '<em>' + typed.slice(p0) + '</em>';
+    else                          twText.innerHTML = parts[0] + '<em>' + parts[1] + '</em>' + typed.slice(p1);
+    if (i < full.length) { setTimeout(tick, speed); }
+    else {
+      setTimeout(() => {
+        twSub.style.display = 'inline';
+        setTimeout(() => twCur.classList.add('done'), 800);
+      }, 320);
+    }
+  }
+  setTimeout(tick, 220);
+}
+window.addEventListener('DOMContentLoaded', startTypewriter);
+
+  function toggleDashboard() {
+    const embed = document.getElementById('dash-embed');
+    const btn   = document.getElementById('dash-toggle-btn');
+    const isOpen = embed.style.display !== 'none';
+    embed.style.display = isOpen ? 'none' : 'block';
+    btn.querySelector('.en-i').textContent = isOpen ? '▶ Launch Interactive Dashboard' : '▼ Close Dashboard';
+    btn.querySelector('.cn-i').textContent = isOpen ? '▶ 打开交互仪表盘' : '▼ 关闭仪表盘';
+  }
+
+// ── 3D APP ICON TILT ──
+document.querySelectorAll('.app-icon').forEach(icon => {
+  const face = icon.querySelector('.app-icon-face');
+  icon.addEventListener('mousemove', e => {
+    const r = face.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top  + r.height / 2;
+    const dx = (e.clientX - cx) / (r.width  / 2);
+    const dy = (e.clientY - cy) / (r.height / 2);
+    const rotY =  dx * 22;
+    const rotX = -dy * 22;
+    face.style.transform = `perspective(500px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.06)`;
+  });
+  icon.addEventListener('mouseleave', () => {
+    face.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) scale(1)';
+    face.style.transition = 'transform 0.45s cubic-bezier(.17,.67,.3,1.2)';
+    setTimeout(() => { face.style.transition = 'transform 0.1s ease-out, box-shadow 0.2s'; }, 450);
+  });
+  icon.addEventListener('mouseenter', () => {
+    face.style.transition = 'transform 0.08s ease-out, box-shadow 0.2s';
+  });
+});
+</script>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="page" id="projects">
+  <div class="page-inner">
+    <div class="page-content" style="max-width:900px">
+      <h2 class="pg-title en">My <em>Projects</em></h2>
+      <h2 class="pg-title cn">我的<em>项目</em></h2>
+      <div class="pg-line"></div>
+
+      <!-- ── DASHBOARD PROJECT ── -->
+      <div class="glass-section" style="padding:0;overflow:hidden;margin-bottom:24px;">
+        <div style="padding:24px 28px 18px;border-bottom:1px solid rgba(255,255,255,0.5);">
+          <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+            <div>
+              <div style="font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);margin-bottom:6px;">Interactive Dashboard</div>
+              <h3 style="font-family:var(--font-en);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;" class="en">Innovation AI — 3-Year Financial Model</h3>
+              <h3 style="font-family:var(--font-cn);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;" class="cn">Innovation AI — 三年财务模型</h3>
+              <p style="font-family:var(--font-ui);font-size:13px;color:var(--text-soft);line-height:1.6;" class="en">Full P&amp;L model with scenario sliders, unit economics, and multi-product analysis. Built with Chart.js.</p>
+              <p style="font-family:var(--font-cn);font-size:13px;color:var(--text-soft);line-height:1.6;" class="cn">含情景滑块、单位经济学和多产品分析的完整P&amp;L模型，使用Chart.js构建。</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;font-family:var(--font-ui);background:rgba(79,142,247,0.15);color:#3a6abf;border:1px solid rgba(79,142,247,0.25)">Chart.js</span>
+              <span style="padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;font-family:var(--font-ui);background:rgba(45,212,160,0.15);color:#1a8a62;border:1px solid rgba(45,212,160,0.25)">FP&amp;A</span>
+              <span style="padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;font-family:var(--font-ui);background:rgba(180,160,255,0.15);color:#6040b0;border:1px solid rgba(180,160,255,0.25)">SaaS Metrics</span>
+            </div>
+          </div>
+          <button onclick="toggleDashboard()" id="dash-toggle-btn"
+            style="margin-top:16px;padding:9px 22px;border-radius:20px;border:1.5px solid rgba(79,142,247,0.4);background:rgba(79,142,247,0.1);color:#3a6abf;font-family:var(--font-ui);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;">
+            <span class="en-i">▶ Launch Interactive Dashboard</span><span class="cn-i">▶ 打开交互仪表盘</span>
+          </button>
+        </div>
+        <div id="dash-embed" style="display:none;width:100%;height:680px;">
+          <iframe srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>Innovation AI — 3-Year Financial Model</title>
+<script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js&quot;></script>
+<link href=&quot;https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@300;400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c14;
+    --surface: #111420;
+    --surface2: #181c2e;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8eaf0;
+    --muted: #6b7494;
+    --blue: #4f8ef7;
+    --blue-dim: rgba(79,142,247,0.15);
+    --green: #2dd4a0;
+    --green-dim: rgba(45,212,160,0.12);
+    --red: #f07070;
+    --red-dim: rgba(240,112,112,0.12);
+    --amber: #f5c842;
+    --amber-dim: rgba(245,200,66,0.1);
+    --purple: #a78bfa;
+    --mono: &#39;IBM Plex Mono&#39;, monospace;
+    --sans: &#39;IBM Plex Sans&#39;, sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .logo-mark {
+    width: 36px; height: 36px;
+    background: var(--blue);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .header h1 { font-size: 15px; font-weight: 500; letter-spacing: 0.02em; }
+  .header-sub { font-size: 12px; color: var(--muted); font-family: var(--mono); margin-top: 2px; }
+  .header-right { display: flex; gap: 8px; align-items: center; }
+  .pill {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    background: var(--surface2);
+  }
+  .pill.active { color: var(--green); border-color: var(--green); background: var(--green-dim); }
+
+  /* ── NAV TABS ── */
+  .nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+  }
+  .nav-tab {
+    padding: 12px 20px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+  /* ── MAIN ── */
+  .main { padding: 28px 32px; max-width: 1400px; }
+
+  /* ── SECTION PANELS ── */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── KPI ROW ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .kpi {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .kpi::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .kpi.blue::before { background: var(--blue); }
+  .kpi.green::before { background: var(--green); }
+  .kpi.red::before { background: var(--red); }
+  .kpi.amber::before { background: var(--amber); }
+  .kpi.purple::before { background: var(--purple); }
+
+  .kpi-label { font-size: 10px; color: var(--muted); font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .kpi-value { font-size: 22px; font-weight: 600; font-family: var(--mono); line-height: 1; }
+  .kpi-value.pos { color: var(--green); }
+  .kpi-value.neg { color: var(--red); }
+  .kpi-value.neu { color: var(--text); }
+  .kpi-value.amber { color: var(--amber); }
+  .kpi-sub { font-size: 11px; color: var(--muted); margin-top: 6px; font-family: var(--mono); }
+
+  /* ── CHART GRID ── */
+  .chart-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .chart-grid.triple { grid-template-columns: 2fr 1fr; }
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .chart-card.full { grid-column: 1 / -1; }
+  .chart-title {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .chart-title span { color: var(--text); font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: 0; font-family: var(--sans); }
+  .chart-wrap { position: relative; }
+
+  /* ── LEGEND ── */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+  /* ── DATA TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    font-family: var(--mono);
+  }
+  .data-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .data-table th:not(:first-child) { text-align: right; }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .data-table td:not(:first-child) { text-align: right; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table .row-total td {
+    background: var(--surface2);
+    font-weight: 600;
+  }
+  .data-table .row-section td {
+    color: var(--muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 16px;
+    background: var(--bg);
+  }
+  .pos { color: var(--green) !important; }
+  .neg { color: var(--red) !important; }
+  .amb { color: var(--amber) !important; }
+
+  /* ── SCENARIO SLIDER ── */
+  .scenario-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .scenario-title {
+    font-size: 11px; font-family: var(--mono); color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 16px;
+  }
+  .slider-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .slider-label { font-size: 12px; color: var(--text); font-family: var(--mono); }
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--blue);
+    height: 4px;
+  }
+  .slider-val {
+    font-size: 13px;
+    font-family: var(--mono);
+    color: var(--blue);
+    text-align: right;
+    font-weight: 600;
+  }
+  .scenario-output {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .sc-kpi {
+    background: var(--surface2);
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .sc-kpi-label { font-size: 10px; color: var(--muted); font-family: var(--mono); margin-bottom: 4px; text-transform: uppercase; }
+  .sc-kpi-val { font-size: 16px; font-weight: 600; font-family: var(--mono); }
+
+  /* ── UNIT ECON TABLE ── */
+  .ue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .ue-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .ue-row:last-child { border-bottom: none; }
+  .ue-label { color: var(--muted); font-family: var(--mono); font-size: 11px; }
+  .ue-val { font-family: var(--mono); font-weight: 600; font-size: 14px; }
+
+  @media (max-width: 900px) {
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .chart-grid { grid-template-columns: 1fr; }
+    .chart-grid.triple { grid-template-columns: 1fr; }
+    .main { padding: 16px; }
+    .header { padding: 16px; }
+    .nav { padding: 0 16px; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class=&quot;header&quot;>
+  <div class=&quot;header-left&quot;>
+    <div class=&quot;logo-mark&quot;>AI</div>
+    <div>
+      <div class=&quot;header h1&quot; style=&quot;font-size:15px;font-weight:500;&quot;>Innovation AI Corp</div>
+      <div class=&quot;header-sub&quot;>3-Year Financial Model · FY2025–2027</div>
+    </div>
+  </div>
+  <div class=&quot;header-right&quot;>
+    <span class=&quot;pill&quot;>AI Chatbot + Data Services</span>
+    <span class=&quot;pill active&quot;>CM+ Year 2</span>
+  </div>
+</div>
+
+<div class=&quot;nav&quot;>
+  <div class=&quot;nav-tab active&quot; onclick=&quot;showTab(&#39;overview&#39;)&quot;>Overview</div>
+  <div class=&quot;nav-tab&quot; onclick=&quot;showTab(&#39;chatbot&#39;)&quot;>AI Chatbot</div>
+  <div class=&quot;nav-tab&quot; onclick=&quot;showTab(&#39;datasvcs&#39;)&quot;>Data Services</div>
+  <div class=&quot;nav-tab&quot; onclick=&quot;showTab(&#39;unitec&#39;)&quot;>Unit Economics</div>
+  <div class=&quot;nav-tab&quot; onclick=&quot;showTab(&#39;scenario&#39;)&quot;>Scenario Analysis</div>
+</div>
+
+<div class=&quot;main&quot;>
+
+<!-- ══ OVERVIEW ══ -->
+<div class=&quot;panel active&quot; id=&quot;panel-overview&quot;>
+  <div class=&quot;kpi-row&quot;>
+    <div class=&quot;kpi blue&quot;>
+      <div class=&quot;kpi-label&quot;>Y3 Total Revenue</div>
+      <div class=&quot;kpi-value neu&quot;>$1.99M</div>
+      <div class=&quot;kpi-sub&quot;>↑ 7.4× from Year 1</div>
+    </div>
+    <div class=&quot;kpi green&quot;>
+      <div class=&quot;kpi-label&quot;>Y3 Contribution Margin</div>
+      <div class=&quot;kpi-value pos&quot;>+$575K</div>
+      <div class=&quot;kpi-sub&quot;>36% CM rate</div>
+    </div>
+    <div class=&quot;kpi red&quot;>
+      <div class=&quot;kpi-label&quot;>Y1 Cash Burn (CM)</div>
+      <div class=&quot;kpi-value neg&quot;>-$131K</div>
+      <div class=&quot;kpi-sub&quot;>Expected early-stage</div>
+    </div>
+    <div class=&quot;kpi amber&quot;>
+      <div class=&quot;kpi-label&quot;>CM Breakeven</div>
+      <div class=&quot;kpi-value amber&quot;>Year 2</div>
+      <div class=&quot;kpi-sub&quot;>+$35K consolidated</div>
+    </div>
+    <div class=&quot;kpi purple&quot;>
+      <div class=&quot;kpi-label&quot;>Y3 Customers</div>
+      <div class=&quot;kpi-value neu&quot;>238</div>
+      <div class=&quot;kpi-sub&quot;>174 Chatbot + 64 DS</div>
+    </div>
+  </div>
+
+  <div class=&quot;chart-grid&quot;>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Revenue by product line <span>Annual ($)</span></div>
+      <div class=&quot;legend&quot;>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#4f8ef7&quot;></div>AI Chatbot</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#2dd4a0&quot;></div>Data Services</div>
+      </div>
+      <div class=&quot;chart-wrap&quot; style=&quot;height:240px&quot;>
+        <canvas id=&quot;revChart&quot;></canvas>
+      </div>
+    </div>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Contribution Margin <span>Annual ($)</span></div>
+      <div class=&quot;legend&quot;>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#4f8ef7&quot;></div>AI Chatbot</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#2dd4a0&quot;></div>Data Services</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#f5c842;height:2px;width:16px;border-radius:1px&quot;></div>Total</div>
+      </div>
+      <div class=&quot;chart-wrap&quot; style=&quot;height:240px&quot;>
+        <canvas id=&quot;cmChart&quot;></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;chart-card&quot;>
+    <div class=&quot;chart-title&quot;>Consolidated P&amp;L Summary</div>
+    <table class=&quot;data-table&quot;>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Y1 Chatbot</th>
+          <th>Y1 Data Svc</th>
+          <th>Y1 Total</th>
+          <th>Y2 Total</th>
+          <th>Y3 Total</th>
+          <th>Y1→Y3 Growth</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Revenue</td><td>$93K</td><td>$174K</td><td>$268K</td><td>$797K</td><td>$1,987K</td><td class=&quot;amb&quot;>+642%</td></tr>
+        <tr><td>Gross Profit</td><td>$61K</td><td>$78K</td><td>$139K</td><td>$475K</td><td>$1,224K</td><td class=&quot;amb&quot;>+781%</td></tr>
+        <tr><td>Total OpEx</td><td>$102K</td><td>$168K</td><td>$270K</td><td>$420K</td><td>$660K</td><td>+144%</td></tr>
+        <tr class=&quot;row-total&quot;>
+          <td>Contribution Margin</td>
+          <td class=&quot;neg&quot;>($41K)</td>
+          <td class=&quot;neg&quot;>($90K)</td>
+          <td class=&quot;neg&quot;>($131K)</td>
+          <td class=&quot;pos&quot;>+$35K</td>
+          <td class=&quot;pos&quot;>+$575K</td>
+          <td class=&quot;pos&quot;>Positive Y2 ✓</td>
+        </tr>
+        <tr>
+          <td>CM %</td>
+          <td class=&quot;neg&quot;>-44%</td>
+          <td class=&quot;neg&quot;>-51%</td>
+          <td class=&quot;neg&quot;>-49%</td>
+          <td class=&quot;pos&quot;>+4%</td>
+          <td class=&quot;pos&quot;>+29%</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ AI CHATBOT ══ -->
+<div class=&quot;panel&quot; id=&quot;panel-chatbot&quot;>
+  <div class=&quot;kpi-row&quot; style=&quot;grid-template-columns:repeat(4,1fr)&quot;>
+    <div class=&quot;kpi blue&quot;>
+      <div class=&quot;kpi-label&quot;>Pricing model</div>
+      <div class=&quot;kpi-value neu&quot; style=&quot;font-size:16px&quot;>Tiered SaaS</div>
+      <div class=&quot;kpi-sub&quot;>$99 / $299 / $1,099/mo</div>
+    </div>
+    <div class=&quot;kpi blue&quot;>
+      <div class=&quot;kpi-label&quot;>ARPU Y1 → Y3</div>
+      <div class=&quot;kpi-value neu&quot;>$299→$340</div>
+      <div class=&quot;kpi-sub&quot;>+5% annual price increase</div>
+    </div>
+    <div class=&quot;kpi green&quot;>
+      <div class=&quot;kpi-label&quot;>Gross Margin Y1→Y3</div>
+      <div class=&quot;kpi-value pos&quot;>65%→75%</div>
+      <div class=&quot;kpi-sub&quot;>Scale drives server cost down</div>
+    </div>
+    <div class=&quot;kpi amber&quot;>
+      <div class=&quot;kpi-label&quot;>Monthly Churn Y1→Y3</div>
+      <div class=&quot;kpi-value amber&quot;>6%→3%</div>
+      <div class=&quot;kpi-sub&quot;>Key risk driver</div>
+    </div>
+  </div>
+  <div class=&quot;chart-grid&quot;>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Customer growth <span>Period-end</span></div>
+      <div class=&quot;chart-wrap&quot; style=&quot;height:220px&quot;>
+        <canvas id=&quot;cbCustomers&quot;></canvas>
+      </div>
+    </div>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Revenue vs OpEx <span>Annual ($)</span></div>
+      <div class=&quot;legend&quot;>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#4f8ef7&quot;></div>Revenue</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#f07070&quot;></div>OpEx</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#2dd4a0&quot;></div>Gross Profit</div>
+      </div>
+      <div class=&quot;chart-wrap&quot; style=&quot;height:220px&quot;>
+        <canvas id=&quot;cbPnl&quot;></canvas>
+      </div>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot;>
+    <div class=&quot;chart-title&quot;>AI Chatbot — Detailed P&amp;L</div>
+    <table class=&quot;data-table&quot;>
+      <thead><tr><th>Metric</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr></thead>
+      <tbody>
+        <tr><td>Period-end customers</td><td>26</td><td>74</td><td>174</td></tr>
+        <tr><td>ARPU / month</td><td>$299</td><td>$320</td><td>$340</td></tr>
+        <tr><td>Annual Revenue</td><td>$93,288</td><td>$284,160</td><td>$709,920</td></tr>
+        <tr><td>Gross Margin %</td><td>65%</td><td>70%</td><td>75%</td></tr>
+        <tr><td>Gross Profit</td><td>$60,637</td><td>$198,912</td><td>$532,440</td></tr>
+        <tr><td>S&amp;amp;M (annual)</td><td>$66,000</td><td>$108,000</td><td>$180,000</td></tr>
+        <tr><td>Product &amp;amp; Eng (annual)</td><td>$36,000</td><td>$60,000</td><td>$96,000</td></tr>
+        <tr><td>Total OpEx</td><td>$102,000</td><td>$168,000</td><td>$276,000</td></tr>
+        <tr class=&quot;row-total&quot;>
+          <td>Contribution Margin</td>
+          <td class=&quot;neg&quot;>($41,363)</td>
+          <td class=&quot;pos&quot;>+$30,912</td>
+          <td class=&quot;pos&quot;>+$256,440</td>
+        </tr>
+        <tr><td>CM %</td><td class=&quot;neg&quot;>-44.3%</td><td class=&quot;pos&quot;>+10.9%</td><td class=&quot;pos&quot;>+36.1%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ DATA SERVICES ══ -->
+<div class=&quot;panel&quot; id=&quot;panel-datasvcs&quot;>
+  <div class=&quot;kpi-row&quot; style=&quot;grid-template-columns:repeat(4,1fr)&quot;>
+    <div class=&quot;kpi green&quot;>
+      <div class=&quot;kpi-label&quot;>Pricing model</div>
+      <div class=&quot;kpi-value neu&quot; style=&quot;font-size:16px&quot;>Annual Contract</div>
+      <div class=&quot;kpi-sub&quot;>POC → subscription path</div>
+    </div>
+    <div class=&quot;kpi green&quot;>
+      <div class=&quot;kpi-label&quot;>ACV Y1 → Y3</div>
+      <div class=&quot;kpi-value pos&quot;>$18K→$19.8K</div>
+      <div class=&quot;kpi-sub&quot;>5× Chatbot ARPU</div>
+    </div>
+    <div class=&quot;kpi amber&quot;>
+      <div class=&quot;kpi-label&quot;>Gross Margin Y1→Y3</div>
+      <div class=&quot;kpi-value amber&quot;>45%→55%</div>
+      <div class=&quot;kpi-sub&quot;>Automation replacing labor</div>
+    </div>
+    <div class=&quot;kpi green&quot;>
+      <div class=&quot;kpi-label&quot;>Monthly Churn Y1→Y3</div>
+      <div class=&quot;kpi-value pos&quot;>4%→2%</div>
+      <div class=&quot;kpi-sub&quot;>High client stickiness</div>
+    </div>
+  </div>
+  <div class=&quot;chart-grid&quot;>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Customer growth <span>Period-end</span></div>
+      <div class=&quot;chart-wrap&quot; style=&quot;height:220px&quot;>
+        <canvas id=&quot;dsCustomers&quot;></canvas>
+      </div>
+    </div>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Revenue vs OpEx <span>Annual ($)</span></div>
+      <div class=&quot;legend&quot;>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#2dd4a0&quot;></div>Revenue</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#f07070&quot;></div>OpEx</div>
+        <div class=&quot;legend-item&quot;><div class=&quot;legend-dot&quot; style=&quot;background:#a78bfa&quot;></div>Gross Profit</div>
+      </div>
+      <div class=&quot;chart-wrap&quot; style=&quot;height:220px&quot;>
+        <canvas id=&quot;dsPnl&quot;></canvas>
+      </div>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot;>
+    <div class=&quot;chart-title&quot;>Data Services — Detailed P&amp;L</div>
+    <table class=&quot;data-table&quot;>
+      <thead><tr><th>Metric</th><th>Year 1</th><th>Year 2</th><th>Year 3</th></tr></thead>
+      <tbody>
+        <tr><td>Period-end customers</td><td>9.7</td><td>27.1</td><td>64.3</td></tr>
+        <tr><td>ACV / month</td><td>$1,500</td><td>$1,575</td><td>$1,654</td></tr>
+        <tr><td>Annual Revenue</td><td>$174,281</td><td>$512,728</td><td>$1,277,116</td></tr>
+        <tr><td>Gross Margin %</td><td>45%</td><td>50%</td><td>55%</td></tr>
+        <tr><td>Gross Profit</td><td>$78,426</td><td>$256,364</td><td>$702,414</td></tr>
+        <tr><td>S&amp;amp;M (annual)</td><td>$72,000</td><td>$108,000</td><td>$168,000</td></tr>
+        <tr><td>Delivery &amp;amp; Eng (annual)</td><td>$96,000</td><td>$144,000</td><td>$216,000</td></tr>
+        <tr><td>Total OpEx</td><td>$168,000</td><td>$252,000</td><td>$384,000</td></tr>
+        <tr class=&quot;row-total&quot;>
+          <td>Contribution Margin</td>
+          <td class=&quot;neg&quot;>($89,574)</td>
+          <td class=&quot;pos&quot;>+$4,364</td>
+          <td class=&quot;pos&quot;>+$318,414</td>
+        </tr>
+        <tr><td>CM %</td><td class=&quot;neg&quot;>-51.4%</td><td class=&quot;pos&quot;>+0.9%</td><td class=&quot;pos&quot;>+24.9%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ UNIT ECONOMICS ══ -->
+<div class=&quot;panel&quot; id=&quot;panel-unitec&quot;>
+  <div class=&quot;ue-grid&quot;>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>AI Chatbot — Unit Economics (Year 1 Base)</div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Monthly S&amp;M + Eng</span><span class=&quot;ue-val&quot;>$5,500</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>New customers / month</span><span class=&quot;ue-val&quot;>3</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>CAC</span><span class=&quot;ue-val&quot; style=&quot;color:var(--blue)&quot;>$1,833</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>ARPU / month</span><span class=&quot;ue-val&quot;>$299</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Gross Margin</span><span class=&quot;ue-val&quot;>65%</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Monthly churn (base)</span><span class=&quot;ue-val&quot;>3%</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Customer Lifetime</span><span class=&quot;ue-val&quot;>33.3 mo</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>LTV (base)</span><span class=&quot;ue-val&quot; style=&quot;color:var(--green)&quot;>$6,478</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>LTV / CAC</span><span class=&quot;ue-val&quot; style=&quot;color:var(--green)&quot;>3.5×</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>CAC Payback Period</span><span class=&quot;ue-val&quot; style=&quot;color:var(--green)&quot;>9.4 months</span></div>
+    </div>
+    <div class=&quot;chart-card&quot;>
+      <div class=&quot;chart-title&quot;>Stress Test — Churn 6%</div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Monthly churn (stress)</span><span class=&quot;ue-val&quot; style=&quot;color:var(--red)&quot;>6%</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Customer Lifetime</span><span class=&quot;ue-val&quot;>16.7 mo</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>LTV (stress)</span><span class=&quot;ue-val&quot; style=&quot;color:var(--red)&quot;>$3,239</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>LTV / CAC (stress)</span><span class=&quot;ue-val&quot; style=&quot;color:var(--red)&quot;>1.76× ⚠</span></div>
+      <div class=&quot;ue-row&quot;><span class=&quot;ue-label&quot;>Benchmark (healthy)</span><span class=&quot;ue-val&quot; style=&quot;color:var(--muted)&quot;>&amp;gt;3.0×</span></div>
+      <div style=&quot;margin-top:20px;padding:14px;background:var(--red-dim);border-radius:8px;border:1px solid rgba(240,112,112,0.2)&quot;>
+        <div style=&quot;font-size:11px;color:var(--red);font-family:var(--mono);font-weight:600;margin-bottom:6px&quot;>RISK FLAG</div>
+        <div style=&quot;font-size:12px;color:var(--text);line-height:1.6&quot;>At 6% monthly churn, LTV/CAC drops to 1.76×—well below the 3× threshold. Churn reduction is the single most impactful lever on long-term profitability.</div>
+      </div>
+      <div style=&quot;margin-top:12px;padding:14px;background:var(--green-dim);border-radius:8px;border:1px solid rgba(45,212,160,0.2)&quot;>
+        <div style=&quot;font-size:11px;color:var(--green);font-family:var(--mono);font-weight:600;margin-bottom:6px&quot;>PAYBACK ✓</div>
+        <div style=&quot;font-size:12px;color:var(--text);line-height:1.6&quot;>9.4-month payback period is healthy (&amp;lt;12 mo benchmark) in both base and stress scenarios.</div>
+      </div>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot; style=&quot;margin-top:16px&quot;>
+    <div class=&quot;chart-title&quot;>LTV/CAC sensitivity — churn rate vs LTV/CAC ratio</div>
+    <div class=&quot;chart-wrap&quot; style=&quot;height:200px&quot;>
+      <canvas id=&quot;ltvChart&quot;></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCENARIO ══ -->
+<div class=&quot;panel&quot; id=&quot;panel-scenario&quot;>
+  <div class=&quot;scenario-panel&quot;>
+    <div class=&quot;scenario-title&quot;>Scenario controls — AI Chatbot Year 3</div>
+    <div class=&quot;slider-row&quot;>
+      <div class=&quot;slider-label&quot;>Monthly Churn Rate</div>
+      <input type=&quot;range&quot; id=&quot;sc-churn&quot; min=&quot;1&quot; max=&quot;10&quot; step=&quot;0.5&quot; value=&quot;3&quot; oninput=&quot;updateScenario()&quot;>
+      <div class=&quot;slider-val&quot; id=&quot;sc-churn-val&quot;>3.0%</div>
+    </div>
+    <div class=&quot;slider-row&quot;>
+      <div class=&quot;slider-label&quot;>ARPU ($/month)</div>
+      <input type=&quot;range&quot; id=&quot;sc-arpu&quot; min=&quot;199&quot; max=&quot;499&quot; step=&quot;10&quot; value=&quot;340&quot; oninput=&quot;updateScenario()&quot;>
+      <div class=&quot;slider-val&quot; id=&quot;sc-arpu-val&quot;>$340</div>
+    </div>
+    <div class=&quot;slider-row&quot;>
+      <div class=&quot;slider-label&quot;>Gross Margin %</div>
+      <input type=&quot;range&quot; id=&quot;sc-gm&quot; min=&quot;40&quot; max=&quot;85&quot; step=&quot;1&quot; value=&quot;75&quot; oninput=&quot;updateScenario()&quot;>
+      <div class=&quot;slider-val&quot; id=&quot;sc-gm-val&quot;>75%</div>
+    </div>
+    <div class=&quot;slider-row&quot;>
+      <div class=&quot;slider-label&quot;>New customers / month</div>
+      <input type=&quot;range&quot; id=&quot;sc-newc&quot; min=&quot;2&quot; max=&quot;25&quot; step=&quot;1&quot; value=&quot;12&quot; oninput=&quot;updateScenario()&quot;>
+      <div class=&quot;slider-val&quot; id=&quot;sc-newc-val&quot;>12</div>
+    </div>
+    <div class=&quot;scenario-output&quot;>
+      <div class=&quot;sc-kpi&quot;>
+        <div class=&quot;sc-kpi-label&quot;>Period-end customers</div>
+        <div class=&quot;sc-kpi-val&quot; id=&quot;sc-out-customers&quot; style=&quot;color:var(--blue)&quot;>174</div>
+      </div>
+      <div class=&quot;sc-kpi&quot;>
+        <div class=&quot;sc-kpi-label&quot;>Annual Revenue</div>
+        <div class=&quot;sc-kpi-val&quot; id=&quot;sc-out-rev&quot; style=&quot;color:var(--text)&quot;>$709K</div>
+      </div>
+      <div class=&quot;sc-kpi&quot;>
+        <div class=&quot;sc-kpi-label&quot;>Contribution Margin</div>
+        <div class=&quot;sc-kpi-val&quot; id=&quot;sc-out-cm&quot; style=&quot;color:var(--green)&quot;>+$256K</div>
+      </div>
+      <div class=&quot;sc-kpi&quot;>
+        <div class=&quot;sc-kpi-label&quot;>LTV / CAC</div>
+        <div class=&quot;sc-kpi-val&quot; id=&quot;sc-out-ltvcac&quot; style=&quot;color:var(--green)&quot;>3.5×</div>
+      </div>
+    </div>
+  </div>
+  <div class=&quot;chart-card&quot;>
+    <div class=&quot;chart-title&quot;>Scenario — Revenue &amp; CM at different churn rates <span>Year 3</span></div>
+    <div class=&quot;chart-wrap&quot; style=&quot;height:220px&quot;>
+      <canvas id=&quot;scenarioChart&quot;></canvas>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// ── TAB SWITCHING ──────────────────────────────────────────
+function showTab(id) {
+  document.querySelectorAll(&#39;.nav-tab&#39;).forEach(t => t.classList.remove(&#39;active&#39;));
+  document.querySelectorAll(&#39;.panel&#39;).forEach(p => p.classList.remove(&#39;active&#39;));
+  event.target.classList.add(&#39;active&#39;);
+  document.getElementById(&#39;panel-&#39; + id).classList.add(&#39;active&#39;);
+}
+
+// ── CHART DEFAULTS ────────────────────────────────────────
+Chart.defaults.color = &#39;#6b7494&#39;;
+Chart.defaults.borderColor = &#39;rgba(255,255,255,0.06)&#39;;
+Chart.defaults.font.family = &quot;&#39;IBM Plex Mono&#39;, monospace&quot;;
+Chart.defaults.font.size = 11;
+
+const fmtK = v => {
+  if (v === undefined || v === null) return &#39;&#39;;
+  const abs = Math.abs(v);
+  const sign = v < 0 ? &#39;-&#39; : &#39;&#39;;
+  if (abs >= 1000000) return sign + &#39;$&#39; + (abs/1000000).toFixed(1) + &#39;M&#39;;
+  return sign + &#39;$&#39; + Math.round(abs/1000) + &#39;K&#39;;
+};
+
+// ── OVERVIEW: Revenue stacked bar ──────────────────────────
+new Chart(document.getElementById(&#39;revChart&#39;), {
+  type: &#39;bar&#39;,
+  data: {
+    labels: [&#39;Year 1&#39;,&#39;Year 2&#39;,&#39;Year 3&#39;],
+    datasets: [
+      { label: &#39;AI Chatbot&#39;, data: [93288, 284160, 709920], backgroundColor: &#39;#4f8ef7&#39;, borderRadius: 3 },
+      { label: &#39;Data Services&#39;, data: [174281, 512728, 1277116], backgroundColor: &#39;#2dd4a0&#39;, borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + &#39;: &#39; + fmtK(ctx.parsed.y) } } },
+    scales: {
+      x: { stacked: true, ticks: { autoSkip: false } },
+      y: { stacked: true, ticks: { callback: fmtK } }
+    }
+  }
+});
+
+// ── OVERVIEW: CM bar + line ───────────────────────────────
+new Chart(document.getElementById(&#39;cmChart&#39;), {
+  type: &#39;bar&#39;,
+  data: {
+    labels: [&#39;Year 1&#39;,&#39;Year 2&#39;,&#39;Year 3&#39;],
+    datasets: [
+      { label: &#39;AI Chatbot CM&#39;, data: [-41363, 30912, 256440], backgroundColor: &#39;#4f8ef7&#39;, borderRadius: 3, order: 2 },
+      { label: &#39;Data Services CM&#39;, data: [-89574, 4364, 318414], backgroundColor: &#39;#2dd4a0&#39;, borderRadius: 3, order: 2 },
+      { label: &#39;Total CM&#39;, data: [-130937, 35276, 574854], type: &#39;line&#39;, borderColor: &#39;#f5c842&#39;, borderWidth: 2, pointBackgroundColor: &#39;#f5c842&#39;, pointRadius: 5, fill: false, order: 1, borderDash: [4,3] }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + &#39;: &#39; + fmtK(ctx.parsed.y) } } },
+    scales: {
+      x: { ticks: { autoSkip: false } },
+      y: { ticks: { callback: fmtK } }
+    }
+  }
+});
+
+// ── CHATBOT: customers ────────────────────────────────────
+new Chart(document.getElementById(&#39;cbCustomers&#39;), {
+  type: &#39;bar&#39;,
+  data: {
+    labels: [&#39;Year 1&#39;,&#39;Year 2&#39;,&#39;Year 3&#39;],
+    datasets: [{ label: &#39;Customers&#39;, data: [26, 74, 174], backgroundColor: [&#39;#4f8ef755&#39;,&#39;#4f8ef788&#39;,&#39;#4f8ef7&#39;], borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y + &#39; customers&#39; } } },
+    scales: { y: { ticks: { callback: v => v } } }
+  }
+});
+
+// ── CHATBOT: P&amp;L waterfall style ──────────────────────────
+new Chart(document.getElementById(&#39;cbPnl&#39;), {
+  type: &#39;bar&#39;,
+  data: {
+    labels: [&#39;Year 1&#39;,&#39;Year 2&#39;,&#39;Year 3&#39;],
+    datasets: [
+      { label: &#39;Revenue&#39;, data: [93288, 284160, 709920], backgroundColor: &#39;#4f8ef7&#39;, borderRadius: 3 },
+      { label: &#39;Gross Profit&#39;, data: [60637, 198912, 532440], backgroundColor: &#39;#2dd4a0&#39;, borderRadius: 3 },
+      { label: &#39;OpEx&#39;, data: [102000, 168000, 276000], backgroundColor: &#39;#f07070&#39;, borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + &#39;: &#39; + fmtK(ctx.parsed.y) } } },
+    scales: { y: { ticks: { callback: fmtK } } }
+  }
+});
+
+// ── DATA SERVICES: customers ──────────────────────────────
+new Chart(document.getElementById(&#39;dsCustomers&#39;), {
+  type: &#39;bar&#39;,
+  data: {
+    labels: [&#39;Year 1&#39;,&#39;Year 2&#39;,&#39;Year 3&#39;],
+    datasets: [{ label: &#39;Customers&#39;, data: [9.7, 27.1, 64.3], backgroundColor: [&#39;#2dd4a055&#39;,&#39;#2dd4a088&#39;,&#39;#2dd4a0&#39;], borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.parsed.y.toFixed(1) + &#39; customers&#39; } } },
+    scales: { y: { ticks: { callback: v => v } } }
+  }
+});
+
+new Chart(document.getElementById(&#39;dsPnl&#39;), {
+  type: &#39;bar&#39;,
+  data: {
+    labels: [&#39;Year 1&#39;,&#39;Year 2&#39;,&#39;Year 3&#39;],
+    datasets: [
+      { label: &#39;Revenue&#39;, data: [174281, 512728, 1277116], backgroundColor: &#39;#2dd4a0&#39;, borderRadius: 3 },
+      { label: &#39;Gross Profit&#39;, data: [78426, 256364, 702414], backgroundColor: &#39;#a78bfa&#39;, borderRadius: 3 },
+      { label: &#39;OpEx&#39;, data: [168000, 252000, 384000], backgroundColor: &#39;#f07070&#39;, borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + &#39;: &#39; + fmtK(ctx.parsed.y) } } },
+    scales: { y: { ticks: { callback: fmtK } } }
+  }
+});
+
+// ── UNIT ECON: LTV/CAC sensitivity ───────────────────────
+(function() {
+  const churns = [1,2,3,4,5,6,7,8,9,10];
+  const arpu = 299, gm = 0.65, cac = 1833;
+  const ltvCac = churns.map(c => {
+    const lt = 1/(c/100);
+    const ltv = arpu * gm * lt;
+    return parseFloat((ltv/cac).toFixed(2));
+  });
+  new Chart(document.getElementById(&#39;ltvChart&#39;), {
+    type: &#39;line&#39;,
+    data: {
+      labels: churns.map(c => c + &#39;%&#39;),
+      datasets: [{
+        label: &#39;LTV/CAC&#39;,
+        data: ltvCac,
+        borderColor: &#39;#4f8ef7&#39;,
+        backgroundColor: &#39;rgba(79,142,247,0.08)&#39;,
+        fill: true,
+        pointBackgroundColor: ltvCac.map(v => v >= 3 ? &#39;#2dd4a0&#39; : v >= 2 ? &#39;#f5c842&#39; : &#39;#f07070&#39;),
+        pointRadius: 5,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => &#39;LTV/CAC: &#39; + ctx.parsed.y.toFixed(2) + &#39;×&#39; } },
+        annotation: {}
+      },
+      scales: {
+        x: { title: { display: true, text: &#39;Monthly Churn Rate&#39;, color: &#39;#6b7494&#39;, font: { size: 10 } } },
+        y: {
+          title: { display: true, text: &#39;LTV / CAC&#39;, color: &#39;#6b7494&#39;, font: { size: 10 } },
+          ticks: { callback: v => v + &#39;×&#39; }
+        }
+      }
+    }
+  });
+})();
+
+// ── SCENARIO: churn sensitivity chart ────────────────────
+(function() {
+  const churns = [1,2,3,4,5,6,7,8,9,10];
+  const opex_y3 = 276000;
+  function simCustomers(churnPct, newPerMonth, months) {
+    let c = 74; // Y2 end as start
+    for (let i = 0; i < months; i++) c = c * (1 - churnPct/100) + newPerMonth;
+    return c;
+  }
+  const revs = churns.map(ch => {
+    const c = simCustomers(ch, 12, 12);
+    return Math.round(c * 340 * 12);
+  });
+  const cms = churns.map((ch, i) => {
+    return Math.round(revs[i] * 0.75 - opex_y3);
+  });
+  new Chart(document.getElementById(&#39;scenarioChart&#39;), {
+    type: &#39;bar&#39;,
+    data: {
+      labels: churns.map(c => c + &#39;%&#39;),
+      datasets: [
+        { label: &#39;Revenue&#39;, data: revs, backgroundColor: &#39;#4f8ef755&#39;, borderRadius: 3, yAxisID: &#39;y&#39; },
+        { label: &#39;CM&#39;, data: cms, type: &#39;line&#39;, borderColor: &#39;#f5c842&#39;, borderWidth: 2, pointBackgroundColor: cms.map(v => v >= 0 ? &#39;#2dd4a0&#39; : &#39;#f07070&#39;), pointRadius: 5, fill: false, yAxisID: &#39;y&#39; }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.dataset.label + &#39;: &#39; + fmtK(ctx.parsed.y) } } },
+      scales: {
+        x: { title: { display: true, text: &#39;Monthly Churn Rate&#39;, color: &#39;#6b7494&#39;, font: { size: 10 } } },
+        y: { ticks: { callback: fmtK } }
+      }
+    }
+  });
+})();
+
+// ── SCENARIO SLIDERS ──────────────────────────────────────
+function updateScenario() {
+  const churn = parseFloat(document.getElementById(&#39;sc-churn&#39;).value);
+  const arpu  = parseFloat(document.getElementById(&#39;sc-arpu&#39;).value);
+  const gm    = parseFloat(document.getElementById(&#39;sc-gm&#39;).value) / 100;
+  const newc  = parseFloat(document.getElementById(&#39;sc-newc&#39;).value);
+
+  document.getElementById(&#39;sc-churn-val&#39;).textContent = churn.toFixed(1) + &#39;%&#39;;
+  document.getElementById(&#39;sc-arpu-val&#39;).textContent  = &#39;$&#39; + arpu;
+  document.getElementById(&#39;sc-gm-val&#39;).textContent    = document.getElementById(&#39;sc-gm&#39;).value + &#39;%&#39;;
+  document.getElementById(&#39;sc-newc-val&#39;).textContent  = newc;
+
+  // Simulate Y3 customers (starting from Y2 end ~74)
+  let customers = 74;
+  for (let i = 0; i < 12; i++) customers = customers * (1 - churn/100) + newc;
+  customers = Math.round(customers * 10) / 10;
+
+  const rev = Math.round(customers * arpu * 12);
+  const gp  = Math.round(rev * gm);
+  const opex = 276000;
+  const cm  = gp - opex;
+
+  // LTV/CAC
+  const cac = 1833;
+  const lt  = 1 / (churn/100);
+  const ltv = arpu * gm * lt;
+  const ratio = (ltv / cac).toFixed(2);
+
+  document.getElementById(&#39;sc-out-customers&#39;).textContent = customers.toFixed(0);
+  document.getElementById(&#39;sc-out-rev&#39;).textContent = fmtK(rev);
+
+  const cmEl = document.getElementById(&#39;sc-out-cm&#39;);
+  cmEl.textContent = (cm >= 0 ? &#39;+&#39; : &#39;&#39;) + fmtK(cm);
+  cmEl.style.color = cm >= 0 ? &#39;var(--green)&#39; : &#39;var(--red)&#39;;
+
+  const ratioEl = document.getElementById(&#39;sc-out-ltvcac&#39;);
+  ratioEl.textContent = ratio + &#39;×&#39;;
+  ratioEl.style.color = ratio >= 3 ? &#39;var(--green)&#39; : ratio >= 2 ? &#39;var(--amber)&#39; : &#39;var(--red)&#39;;
+}
+</script>
+</body>
+</html>
+"
+            style="width:100%;height:100%;border:none;"
+            title="Innovation AI Financial Dashboard">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- ── EXCEL PROJECT 1 ── -->
+      <div class="glass-section" style="margin-bottom:24px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+          <div>
+            <div style="font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);margin-bottom:6px;">Financial Model · Excel</div>
+            <h3 style="font-family:var(--font-en);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;" class="en">Innovation AI — 3-Year Financial Model</h3>
+            <h3 style="font-family:var(--font-cn);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;" class="cn">Innovation AI — 三年财务模型（Excel）</h3>
+            <p style="font-family:var(--font-ui);font-size:13px;color:var(--text-soft);" class="en">Multi-sheet model covering assumptions, P&L by product line, unit economics, and consolidated view.</p>
+            <p style="font-family:var(--font-cn);font-size:13px;color:var(--text-soft);" class="cn">多表格模型，涵盖假设、各产品线P&L、单位经济学和综合视图。</p>
+          </div>
+          <a href="/mnt/user-data/uploads/InnovationAI_3Year_Financial_Model.xlsx" download
+             style="padding:9px 22px;border-radius:20px;border:1.5px solid rgba(45,212,160,0.5);background:rgba(45,212,160,0.1);color:#1a8a62;font-family:var(--font-ui);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;display:inline-block;transition:all 0.2s;">
+            <span class="en-i">⬇ Download .xlsx</span><span class="cn-i">⬇ 下载文件</span>
+          </a>
+        </div>
+        <!-- Highlights grid -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+          <div style="background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);border-radius:14px;padding:16px;">
+            <div style="font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#4a80d0;margin-bottom:6px;">Y3 Revenue</div>
+            <div style="font-family:var(--font-ui);font-size:22px;font-weight:700;color:var(--text)">$1.99M</div>
+            <div style="font-family:var(--font-ui);font-size:11px;color:var(--text-soft);margin-top:3px;">↑ 7.4× from Year 1</div>
+          </div>
+          <div style="background:rgba(45,212,160,0.08);border:1px solid rgba(45,212,160,0.2);border-radius:14px;padding:16px;">
+            <div style="font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1a8a62;margin-bottom:6px;">CM Breakeven</div>
+            <div style="font-family:var(--font-ui);font-size:22px;font-weight:700;color:var(--text)">Year 2</div>
+            <div style="font-family:var(--font-ui);font-size:11px;color:var(--text-soft);margin-top:3px;">+$35K consolidated</div>
+          </div>
+          <div style="background:rgba(167,139,250,0.08);border:1px solid rgba(167,139,250,0.2);border-radius:14px;padding:16px;">
+            <div style="font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#7050c0;margin-bottom:6px;">LTV / CAC</div>
+            <div style="font-family:var(--font-ui);font-size:22px;font-weight:700;color:var(--text)">3.5×</div>
+            <div style="font-family:var(--font-ui);font-size:11px;color:var(--text-soft);margin-top:3px;">Payback 9.4 months</div>
+          </div>
+        </div>
+        <div style="font-family:var(--font-ui);font-size:12px;color:var(--text-soft);line-height:1.7;padding:14px;background:rgba(255,255,255,0.35);border-radius:12px;border:1px solid rgba(255,255,255,0.6);">
+          <strong style="color:var(--text-mid);" class="en">Sheets: </strong><span class="en">Assumptions · AI Chatbot P&L · Data Services P&L · Consolidated P&L · Unit Economics</span>
+          <strong style="color:var(--text-mid);" class="cn">工作表：</strong><span class="cn">假设 · AI聊天机器人P&L · 数据服务P&L · 综合P&L · 单位经济学</span>
+        </div>
+      </div>
+
+      <!-- ── EXCEL PROJECT 2 ── -->
+      <div class="glass-section">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:20px;">
+          <div>
+            <div style="font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);margin-bottom:6px;">FP&A Model · Excel</div>
+            <h3 style="font-family:var(--font-en);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;" class="en">Surrogacy Agency — FP&A Model</h3>
+            <h3 style="font-family:var(--font-cn);font-size:22px;font-weight:700;color:var(--text);margin-bottom:4px;" class="cn">代孕机构 — FP&A财务模型</h3>
+            <p style="font-family:var(--font-ui);font-size:13px;color:var(--text-soft);" class="en">Milestone-based revenue recognition with pipeline waterfall, cash flow bridge, and 12-month forecast.</p>
+            <p style="font-family:var(--font-cn);font-size:13px;color:var(--text-soft);" class="cn">基于里程碑的收入确认，含管道瀑布图、现金流桥接和12个月预测。</p>
+          </div>
+          <a href="/mnt/user-data/uploads/Desensitized_Agency_FPA_Model.xlsx" download
+             style="padding:9px 22px;border-radius:20px;border:1.5px solid rgba(245,200,66,0.5);background:rgba(245,200,66,0.1);color:#9a7010;font-family:var(--font-ui);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;display:inline-block;transition:all 0.2s;">
+            <span class="en-i">⬇ Download .xlsx</span><span class="cn-i">⬇ 下载文件</span>
+          </a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+          <div style="background:rgba(245,200,66,0.08);border:1px solid rgba(245,200,66,0.25);border-radius:14px;padding:16px;">
+            <div style="font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#9a7010;margin-bottom:6px;">FY Revenue</div>
+            <div style="font-family:var(--font-ui);font-size:22px;font-weight:700;color:var(--text)">$11.2M</div>
+            <div style="font-family:var(--font-ui);font-size:11px;color:var(--text-soft);margin-top:3px;">12-month forecast</div>
+          </div>
+          <div style="background:rgba(45,212,160,0.08);border:1px solid rgba(45,212,160,0.2);border-radius:14px;padding:16px;">
+            <div style="font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1a8a62;margin-bottom:6px;">Gross Margin</div>
+            <div style="font-family:var(--font-ui);font-size:22px;font-weight:700;color:var(--text)">~51%</div>
+            <div style="font-family:var(--font-ui);font-size:11px;color:var(--text-soft);margin-top:3px;">Milestone-weighted avg</div>
+          </div>
+          <div style="background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);border-radius:14px;padding:16px;">
+            <div style="font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#4a80d0;margin-bottom:6px;">Active Cases</div>
+            <div style="font-family:var(--font-ui);font-size:22px;font-weight:700;color:var(--text)">101→117</div>
+            <div style="font-family:var(--font-ui);font-size:11px;color:var(--text-soft);margin-top:3px;">Pipeline M1 → M12</div>
+          </div>
+        </div>
+        <div style="font-family:var(--font-ui);font-size:12px;color:var(--text-soft);line-height:1.7;padding:14px;background:rgba(255,255,255,0.35);border-radius:12px;border:1px solid rgba(255,255,255,0.6);">
+          <strong style="color:var(--text-mid);" class="en">Sheets: </strong><span class="en">Assumptions · Pipeline Waterfall · Revenue Recognition · Cash Flow Bridge</span>
+          <strong style="color:var(--text-mid);" class="cn">工作表：</strong><span class="cn">假设 · 管道瀑布 · 收入确认 · 现金流桥接</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
